@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 import Logo from "./components/Logo";
 
@@ -11,15 +11,35 @@ const [dob, setDob] = useState("13 February 1991");
     alert("Hello, "+ fname + " "+ lname +  " you were born on "+ dob, ); // this works on the web version - try uncommenting one or the other lines as necessary
 }
   return (
-    <View>
+    <View style={styles.container}>
     <Logo/>
-    <Text>Hello {fname} {lname}. You were born on {dob}</Text>  
+    <Text style={styles.text}>Hello {fname} {lname}. You were born on {dob}</Text>  
       
-      <TextInput placeholder="Enter your firstname" onChangeText={setFname}/>
-      <TextInput placeholder="Enter your lastname" onChangeText={setLname}/>
-<TextInput placeholder="Enter your date of birth" onChangeText={setDob}/>
+      <TextInput style={styles.input} placeholder="Enter your firstname" onChangeText={setFname}/>
+      <TextInput style={styles.input} placeholder="Enter your lastname" onChangeText={setLname}/>
+<TextInput style={styles.input} placeholder="Enter your date of birth" onChangeText={setDob}/>
 <Button title="SUBMIT" onPress={buttonClicked}/>
 
     </View>
   );
 }
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+padding: 20,
+justifyContent: 'center',
+backgroundColor: '#fff',
+},
+input: {
+borderWidth: 1,
+borderColor: '#ccc',
+borderRadius: 8,
+padding: 10,
+marginVertical: 8,
+},
+text: {
+fontSize: 16,
+marginVertical: 10,
+},
+});
+
